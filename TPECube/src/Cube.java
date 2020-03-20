@@ -32,22 +32,22 @@ public class Cube {
 	 * @param w la rotation à appliquer
 	 */
 	public void appliquePerm(Rotation w) {
-		this.un.setOr((w.orientation.get(this.un.getPos()-1)+this.un.getOr())%3);
-		this.deux.setOr((w.orientation.get(this.deux.getPos()-1)+this.deux.getOr())%3);
-		this.trois.setOr((w.orientation.get(this.trois.getPos()-1)+this.trois.getOr())%3);
-		this.quatre.setOr((w.orientation.get(this.quatre.getPos()-1)+this.quatre.getOr())%3);
-		this.cinq.setOr((w.orientation.get(this.cinq.getPos()-1)+this.cinq.getOr())%3);
-		this.six.setOr((w.orientation.get(this.six.getPos()-1)+this.six.getOr())%3);
-		this.sept.setOr((w.orientation.get(this.sept.getPos()-1)+this.sept.getOr())%3);
+		this.un.setOr((w.getOrientation().get(this.un.getPos()-1)+this.un.getOr())%3);
+		this.deux.setOr((w.getOrientation().get(this.deux.getPos()-1)+this.deux.getOr())%3);
+		this.trois.setOr((w.getOrientation().get(this.trois.getPos()-1)+this.trois.getOr())%3);
+		this.quatre.setOr((w.getOrientation().get(this.quatre.getPos()-1)+this.quatre.getOr())%3);
+		this.cinq.setOr((w.getOrientation().get(this.cinq.getPos()-1)+this.cinq.getOr())%3);
+		this.six.setOr((w.getOrientation().get(this.six.getPos()-1)+this.six.getOr())%3);
+		this.sept.setOr((w.getOrientation().get(this.sept.getPos()-1)+this.sept.getOr())%3);
 		
 		
-		this.un.setPos(w.position.get(this.un.getPos()-1));
-		this.deux.setPos(w.position.get(this.deux.getPos()-1));
-		this.trois.setPos(w.position.get(this.trois.getPos()-1));
-		this.quatre.setPos(w.position.get(this.quatre.getPos()-1));
-		this.cinq.setPos(w.position.get(this.cinq.getPos()-1));
-		this.six.setPos(w.position.get(this.six.getPos()-1));
-		this.sept.setPos(w.position.get(this.sept.getPos()-1));	
+		this.un.setPos(w.getPosition().get(this.un.getPos()-1));
+		this.deux.setPos(w.getPosition().get(this.deux.getPos()-1));
+		this.trois.setPos(w.getPosition().get(this.trois.getPos()-1));
+		this.quatre.setPos(w.getPosition().get(this.quatre.getPos()-1));
+		this.cinq.setPos(w.getPosition().get(this.cinq.getPos()-1));
+		this.six.setPos(w.getPosition().get(this.six.getPos()-1));
+		this.sept.setPos(w.getPosition().get(this.sept.getPos()-1));	
 	}
 	@Override
 	public String toString() {

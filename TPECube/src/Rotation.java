@@ -9,11 +9,11 @@ public class Rotation {
 	/**
 	 * liste des changements de position qu'effectue cette rotation
 	 */
-	public ArrayList<Integer> position;
+	private ArrayList<Integer> position;
 	/**
 	 * liste des changements d'orientation qu'effectue cette rotation
 	 */
-	public ArrayList<Integer> orientation;
+	private ArrayList<Integer> orientation;
 	/**
 	 * taille d'une rotation ( nombre de Cubies qu'elle affecte )
 	 */
@@ -56,6 +56,20 @@ public class Rotation {
 			t.orientation.set(this.position.get(i)-1, (3-this.orientation.get(i))%3);
 		}
 		return t;
+	}
+	/**
+	 * Renvoie la list de la position
+	 * @return position
+	 */
+	public ArrayList<Integer> getPosition(){
+		return this.position;
+	}
+	/**
+	 * Renvoie la liste de l'orientation
+	 * @return orientation
+	 */
+	public ArrayList<Integer> getOrientation(){
+		return this.orientation;
 	}
 	
 	

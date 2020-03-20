@@ -1,10 +1,6 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-
 /**
- * Classe représentant le Cube de Rubik
- * @author Léandre Adam
+ * Classe reprÃ©sentant le Cube de Rubik
+ * @author LÃ©andre Adam
  * 
  */
 public class Cube {
@@ -27,8 +23,8 @@ public class Cube {
 		}
 	}
 	/**
-	 * Méthode appliquant une permutation sur le Cube this
-	 * @param w la rotation à appliquer
+	 * MÃ©thode appliquant une permutation sur le Cube this
+	 * @param w la rotation Ã  appliquer
 	 */
 	public void appliquePerm(Rotation w) {
 		for (int i = 0; i<TAILLE; i++) {

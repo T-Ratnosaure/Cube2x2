@@ -1,56 +1,52 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
 /**
- * Classe repr√©sentant le Cube de Rubik
- * @author L√©andre Adam
+ * Classe reprÈsentant le Cube de Rubik
+ * @author LÈandre Adam
  * 
  */
 public class Cube {
-	private Cubie un;
-	private Cubie deux;
-	private Cubie trois;
-	private Cubie quatre;
-	private Cubie cinq;
-	private Cubie six;
-	private Cubie sept;
+	
+	final public static Integer[] POSITIONS_INITIALES = {0,1,2,3,4,5,6};
+	final public static int TAILLE=7;
+	
+	final public Cubie[] cubies = new Cubie[TAILLE];
 	@SuppressWarnings("unused")
 	private boolean solved;
 	
 	/**
 	 * Constructeur du Cube
-	 * @param pos : comprenant 14 valeurs num√©riques : les 7 premi√®res repr√©sentant les positions et les 7 suivantes sont les orientations
+	 * @param pos : tableau des positions des 7 cubies
+	 * @param ori : tableau des orientations des 7 cubies
 	 */
-	public Cube(int... pos) {
-		un = new Cubie(1,pos[0],pos[7]);
-		deux = new Cubie(2,pos[1],pos[8]);
-		trois=new Cubie(3,pos[2],pos[9]);
-		quatre=new Cubie(4,pos[3],pos[10]);
-		cinq=new Cubie(5,pos[4],pos[11]);
-		six=new Cubie(6,pos[5],pos[12]);
-		sept=new Cubie(7, pos[6],pos[13]);
+	public Cube(Integer[] posAc, Integer[] ori) {
+		for (int i = 0; i<TAILLE; i++ ) {
+			cubies[i] = new Cubie(POSITIONS_INITIALES[i], posAc[i], ori[i]); 
+		}
 	}
 	/**
-	 * M√©thode appliquant une permutation sur le Cube this
-	 * @param w la rotation √† appliquer
+	 * MÈthode appliquant une permutation sur le Cube this
+	 * @param w la rotation ‡ appliquer
 	 */
 	public void appliquePerm(Rotation w) {
-		this.un.setOr((w.getOrientation().get(this.un.getPos()-1)+this.un.getOr())%3);
-		this.deux.setOr((w.getOrientation().get(this.deux.getPos()-1)+this.deux.getOr())%3);
-		this.trois.setOr((w.getOrientation().get(this.trois.getPos()-1)+this.trois.getOr())%3);
-		this.quatre.setOr((w.getOrientation().get(this.quatre.getPos()-1)+this.quatre.getOr())%3);
-		this.cinq.setOr((w.getOrientation().get(this.cinq.getPos()-1)+this.cinq.getOr())%3);
-		this.six.setOr((w.getOrientation().get(this.six.getPos()-1)+this.six.getOr())%3);
-		this.sept.setOr((w.getOrientation().get(this.sept.getPos()-1)+this.sept.getOr())%3);
-		
-		
-		this.un.setPos(w.getPosition().get(this.un.getPos()-1));
-		this.deux.setPos(w.getPosition().get(this.deux.getPos()-1));
-		this.trois.setPos(w.getPosition().get(this.trois.getPos()-1));
-		this.quatre.setPos(w.getPosition().get(this.quatre.getPos()-1));
-		this.cinq.setPos(w.getPosition().get(this.cinq.getPos()-1));
-		this.six.setPos(w.getPosition().get(this.six.getPos()-1));
-		this.sept.setPos(w.getPosition().get(this.sept.getPos()-1));	
+		for (int i = 0; i<TAILLE; i++) {
+			int posBeforeRotation = this.cubies[i].getPos();
+			int oriBeforeRotation = this.cubies[i].getOr();
+			int oriAfterRotation = w.getOrientation().get(posBeforeRotation);
+			int posAfterRotation = w.getPosition().get(posBeforeRotation);
+			
+			this.cubies[i].setOr((oriAfterRotation + oriBeforeRotation)%3);
+			this.cubies[i].setPos(posAfterRotation);
+		}
 	}
 	@Override
 	public String toString() {
-		return "Le cubie 1 est en position "+this.un.getPos()+ " et d'orientation "+this.un.getOr()+"\n"+"Le cubie 2 est en position "+this.deux.getPos()+ " et d'orientation "+this.deux.getOr()+"\n"+"Le cubie 3 est en position "+this.trois.getPos()+ " et d'orientation "+this.trois.getOr()+"\n"+"Le cubie 4 est en position "+this.quatre.getPos()+ " et d'orientation "+this.quatre.getOr()+"\n"+"Le cubie 5 est en position "+this.cinq.getPos()+ " et d'orientation "+this.cinq.getOr()+"\n"+"Le cubie 6 est en position "+this.six.getPos()+ " et d'orientation "+this.six.getOr()+"\n"+"Le cubie 7 est en position "+this.sept.getPos()+ " et d'orientation "+this.sept.getOr()+"\n";
+		String result = "";
+		for (int i = 0; i<TAILLE; i++) {
+			result += "Le cubie " + i + " est en position " + this.cubies[i].getPos() + " et d'orientation " + this.cubies[i].getOr() + "\n";
+		}
+		return result;
 	}
 }

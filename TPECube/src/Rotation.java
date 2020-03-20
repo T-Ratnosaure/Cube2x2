@@ -1,74 +1,72 @@
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 /**
- * Classe pr√©sentant une rotation ( mod√®le math√©matique de la permutation ) du Rubik's Cube
- * @author L√©andre Adam
+ * Classe prÈsentant une rotation ( modËle mathÈmatique de la permutation ) du Rubik's Cube
+ * @author LÈandre Adam
  *
  */
 public class Rotation {
 	/**
 	 * liste des changements de position qu'effectue cette rotation
 	 */
-	private ArrayList<Integer> position;
+	private List<Integer> position;
 	/**
 	 * liste des changements d'orientation qu'effectue cette rotation
 	 */
-	private ArrayList<Integer> orientation;
-	/**
-	 * taille d'une rotation ( nombre de Cubies qu'elle affecte )
-	 */
-	final public int TAILLE=7;
+	private List<Integer> orientation;
 	/**
 	 * Constructeur de la Rotation
-	 * @param pos comprenant 14 valeurs num√©riques : les 7 premi√®res repr√©sentant les positions et les 7 suivantes sont les orientations
+	 * @param pos : tableau des positions des 7 cubies
+	 * @param ori : tableau des orientations des 7 cubies
 	 */
-	public Rotation(int... pos) {
-		this.position = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0,0));
-		this.orientation=new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0,0));
-		for(int i=0; i<TAILLE; i++) {
-			this.position.set(i,pos[i]);
-			this.orientation.set(i,pos[i+7]);
-		}
 
-		
+	public Rotation(Integer[] pos,Integer[] ori) {
+		this.position = Arrays.asList(pos);
+		this.orientation= Arrays.asList(ori);		
 	}
+	
+	
 	/**
-	 * calcule le produit B¬∞A
+	 * calcule le produit B∞this (d'abord this puis B)
 	 * @param B une Rotation
-	 * @return B¬∞this
+	 * @return B∞this
 	 */
 	public Rotation permProd(Rotation B) {
-		Rotation t = new Rotation(0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-		for(int i=0;i<TAILLE;i++) {
-			t.position.set(i, B.position.get(this.position.get(i)-1));
-			t.orientation.set(i, (B.orientation.get(this.position.get(i)-1)+this.orientation.get(i))%3);
+		Integer[] pos = new Integer[7];
+		Integer[] ori = new Integer[7];
+		for(int i=0;i<Cube.TAILLE;i++) {
+			pos[i]=B.position.get(this.position.get(i));
+			ori[i]=(B.orientation.get(this.position.get(i))+this.orientation.get(i))%3;
 		}
-		return t;
+		Rotation productRotation = new Rotation(pos,ori);
+		return productRotation;
 	}
 	/**
 	 * Calcule la permutation inverse de this
 	 * @return A^{-1}
 	 */
 	public Rotation permInv() {
-		Rotation t = new Rotation(0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-		for(int i=0;i<TAILLE;i++) {
-			t.position.set(this.position.get(i)-1, i+1);
-			t.orientation.set(this.position.get(i)-1, (3-this.orientation.get(i))%3);
+		Integer[] pos = new Integer[7];
+		Integer[] ori = new Integer[7];
+		for(int i=0;i<Cube.TAILLE;i++) {
+			pos[this.position.get(i)] = i+1;
+			ori[this.position.get(i)] = (3-this.orientation.get(i))%3;
 		}
-		return t;
+		Rotation reverseRotation = new Rotation(pos,ori);
+		return reverseRotation;
 	}
 	/**
 	 * Renvoie la list de la position
 	 * @return position
 	 */
-	public ArrayList<Integer> getPosition(){
+	public List<Integer> getPosition(){
 		return this.position;
 	}
 	/**
 	 * Renvoie la liste de l'orientation
 	 * @return orientation
 	 */
-	public ArrayList<Integer> getOrientation(){
+	public List<Integer> getOrientation(){
 		return this.orientation;
 	}
 	

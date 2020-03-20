@@ -1,29 +1,29 @@
 /**
  *
- * Classe reprÃ©sentant un Cubie, c'est Ã  dire un angle du cube
+ * Classe représentant un Cubie, c'est à dire un angle du cube
  *
- * @author LÃ©andre Adam
+ * @author Léandre Adam
  *
  */
 public class Cubie {
 	/**
-	 * reprÃ©sente la position du Cubie dans le Cube rÃ©solu
+	 * représente la position du Cubie dans le Cube résolu
 	 */
 	@SuppressWarnings("unused")
 	private int positionInitiale;
 	/**
-	 * reprÃ©sente la position du Cubie dans le Cube mÃ©langÃ©
+	 * représente la position du Cubie dans le Cube mélangé
 	 */
 	private int positionActuelle;
 	/**
-	 * reprÃ©sente l'orientation du Cubie dans le Cube mÃ©langÃ©
+	 * représente l'orientation du Cubie dans le Cube mélangé
 	 */
 	private int orientation;
 	/**
 	 * 
-	 * @param posIn la position du Cubie dans le Cube rÃ©solu
-	 * @param posAc la position du Cubie dans le Cube mÃ©langÃ©
-	 * @param ori l'orientation du Cubie dans le Cube mÃ©langÃ©
+	 * @param posIn la position du Cubie dans le Cube résolu
+	 * @param posAc la position du Cubie dans le Cube mélangé
+	 * @param ori l'orientation du Cubie dans le Cube mélangé
 	 */
 	public Cubie(int posIn, int posAc, int ori) {
 		positionInitiale=posIn;
@@ -31,8 +31,8 @@ public class Cubie {
 		orientation=ori;
 	}
 	/**
-	 * RÃ©cupÃ¨re la position du Cubie dans le Cube mÃ©langÃ©
-	 * @return positionActuelle : la position du Cubie dans le Cube mÃ©langÃ©
+	 * Récupère la position du Cubie dans le Cube mélangé
+	 * @return positionActuelle : la position du Cubie dans le Cube mélangé
 	 */
 	public int getPos() {
 		return positionActuelle;
@@ -45,14 +45,14 @@ public class Cubie {
 		return orientation;
 	}
 	/**
-	 * Change la position du Cubie dans le Cube mÃ©langÃ©
+	 * Change la position du Cubie dans le Cube mélangé
 	 * @param p : nouvelle position du Cubie
 	 */
 	public void setPos(int p) {
 		positionActuelle=p;
 	}
 	/**
-	 * Change l'orientation du Cubie dans le Cube mÃ©langÃ©
+	 * Change l'orientation du Cubie dans le Cube mélangé
 	 * @param p : nouvelle orientation du Cubie
 	 */
 	public void setOr(int p) {

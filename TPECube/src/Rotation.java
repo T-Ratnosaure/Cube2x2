@@ -1,24 +1,23 @@
 import java.util.Arrays;
 import java.util.List;
 /**
- * Classe prÃ©sentant une rotation ( modÃ¨le mathÃ©matique de la permutation ) du Rubik's Cube
- * @author LÃ©andre Adam
- * @author Aydin Abiar
+ * Classe présentant une rotation ( modèle mathématique de la permutation ) du Rubik's Cube
+ * @author Léandre Adam
  *
  */
 public class Rotation {
 	/**
-	 * liste des changements de position qu'effectue cette rotation
+	 * liste des changements de position qu'effectue cette rotation ( le cubie à la position i a une nouvelle position position[i] )
 	 */
 	private List<Integer> position;
 	/**
-	 * liste des changements d'orientation qu'effectue cette rotation
+	 * liste des changements d'orientation qu'effectue cette rotation ( le cubie à la position i a une nouvelle orientation orientation[i] )
 	 */
 	private List<Integer> orientation;
 	/**
 	 * Constructeur de la Rotation
-	 * @param pos : tableau des positions des 7 cubies
-	 * @param ori : tableau des orientations des 7 cubies
+	 * @param pos : tableau des changements de position des 7 cubies
+	 * @param ori : tableau des changements d'orientations des 7 cubies
 	 */
 
 	public Rotation(Integer[] pos,Integer[] ori) {
@@ -28,16 +27,17 @@ public class Rotation {
 	
 	
 	/**
-	 * calcule le produit BÂ°this (d'abord this puis B)
+	 * calcule le produit B°this (d'abord this puis B)
 	 * @param B une Rotation
-	 * @return BÂ°this
+	 * @return B°this
 	 */
 	public Rotation permProd(Rotation B) {
 		Integer[] pos = new Integer[7];
 		Integer[] ori = new Integer[7];
 		for(int i=0;i<Cube.TAILLE;i++) {
-			pos[i]=B.position.get(this.position.get(i));
-			ori[i]=(B.orientation.get(this.position.get(i))+this.orientation.get(i))%3;
+			int posAfterThis = this.position.get(i);
+			pos[i]=B.position.get(posAfterThis);
+			ori[i]=(B.orientation.get(posAfterThis)+this.orientation.get(i))%3;
 		}
 		Rotation productRotation = new Rotation(pos,ori);
 		return productRotation;
@@ -50,21 +50,21 @@ public class Rotation {
 		Integer[] pos = new Integer[7];
 		Integer[] ori = new Integer[7];
 		for(int i=0;i<Cube.TAILLE;i++) {
-			pos[this.position.get(i)] = i+1;
+			pos[this.position.get(i)] = i;
 			ori[this.position.get(i)] = (3-this.orientation.get(i))%3;
 		}
 		Rotation reverseRotation = new Rotation(pos,ori);
 		return reverseRotation;
 	}
 	/**
-	 * Renvoie la list de la position
+	 * Renvoie la liste des changements de position de la rotation
 	 * @return position
 	 */
 	public List<Integer> getPosition(){
 		return this.position;
 	}
 	/**
-	 * Renvoie la liste de l'orientation
+	 * Renvoie la liste des changements d'orientation de la rotation
 	 * @return orientation
 	 */
 	public List<Integer> getOrientation(){

@@ -1,62 +1,66 @@
 /**
  *
- * Classe repr√©sentant un Cubie, c'est √† dire un angle du cube
+ * Classe reprÈsentant un Cubie, c'est ‡ dire un angle du cube
  *
- * @author L√©andre Adam
- * @author Aydin Abiar
+ * @author LÈandre Adam
  *
  */
 public class Cubie {
 	/**
-	 * repr√©sente la position du Cubie dans le Cube r√©solu
+	 * Position du Cubie dans le Cube rÈsolu
 	 */
 	@SuppressWarnings("unused")
 	private int positionInitiale;
 	/**
-	 * repr√©sente la position du Cubie dans le Cube m√©lang√©
+	 * Position du Cubie dans le Cube mÈlangÈ
 	 */
 	private int positionActuelle;
 	/**
-	 * repr√©sente l'orientation du Cubie dans le Cube m√©lang√©
+	 * Orientation du Cubie dans le Cube mÈlangÈ
 	 */
 	private int orientation;
+	
 	/**
 	 * 
-	 * @param posIn la position du Cubie dans le Cube r√©solu
-	 * @param posAc la position du Cubie dans le Cube m√©lang√©
-	 * @param ori l'orientation du Cubie dans le Cube m√©lang√©
+	 * @param posIn la position du Cubie dans le Cube rÈsolu
+	 * @param posAc la position du Cubie dans le Cube mÈlangÈ
+	 * @param ori l'orientation du Cubie dans le Cube mÈlangÈ
 	 */
 	public Cubie(int posIn, int posAc, int ori) {
 		positionInitiale=posIn;
 		positionActuelle=posAc;
 		orientation=ori;
 	}
+	
 	/**
-	 * R√©cup√®re la position du Cubie dans le Cube m√©lang√©
-	 * @return positionActuelle : la position du Cubie dans le Cube m√©lang√©
+	 * RÈcupËre la position du Cubie dans le Cube mÈlangÈ
+	 * @return positionActuelle : la position du Cubie dans le Cube mÈlangÈ
 	 */
 	public int getPos() {
 		return positionActuelle;
 	}
+	
 	/**
-	 * Recupere l'orientation du cubie.
+	 * RÈcupËre l'orientation du cubie.
 	 * @return orientation : l'orientation du cubie
 	 */
 	public int getOr() {
 		return orientation;
 	}
+	
 	/**
-	 * Change la position du Cubie dans le Cube m√©lang√©
+	 * Change la position du Cubie dans le Cube mÈlangÈ
 	 * @param p : nouvelle position du Cubie
 	 */
-	public void setPos(int p) {
-		positionActuelle=p;
+	public void setPos(int posAc) {
+		positionActuelle=posAc;
 	}
+	
 	/**
-	 * Change l'orientation du Cubie dans le Cube m√©lang√©
+	 * Change l'orientation du Cubie dans le Cube mÈlangÈ
 	 * @param p : nouvelle orientation du Cubie
 	 */
-	public void setOr(int p) {
-		orientation=p;
+	public void setOr(int oriAc) {
+		orientation=oriAc;
 	}
 }

@@ -1,8 +1,9 @@
 import java.util.Arrays;
 import java.util.List;
 /**
- * Classe présentant une rotation ( modèle mathématique de la permutation ) du Rubik's Cube
- * @author Léandre Adam
+ * Classe prÃ©sentant une rotation ( modÃ¨le mathÃ©matique de la permutation ) du Rubik's Cube
+ * @author LÃ©andre Adam
+ * @author Aydin Abiar
  *
  */
 public class Rotation {
@@ -27,9 +28,9 @@ public class Rotation {
 	
 	
 	/**
-	 * calcule le produit B°this (d'abord this puis B)
+	 * calcule le produit BÂ°this (d'abord this puis B)
 	 * @param B une Rotation
-	 * @return B°this
+	 * @return BÂ°this
 	 */
 	public Rotation permProd(Rotation B) {
 		Integer[] pos = new Integer[7];

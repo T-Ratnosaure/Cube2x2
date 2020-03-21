@@ -1,29 +1,30 @@
 /**
  *
- * Classe représentant un Cubie, c'est à dire un angle du cube
+ * Classe reprÃ©sentant un Cubie, c'est Ã  dire un angle du cube
  *
- * @author Léandre Adam
+ * @author LÃ©andre Adam
+ * @author Aydin Abiar
  *
  */
 public class Cubie {
 	/**
-	 * représente la position du Cubie dans le Cube résolu
+	 * reprÃ©sente la position du Cubie dans le Cube rÃ©solu
 	 */
 	@SuppressWarnings("unused")
 	private int positionInitiale;
 	/**
-	 * représente la position du Cubie dans le Cube mélangé
+	 * reprÃ©sente la position du Cubie dans le Cube mÃ©langÃ©
 	 */
 	private int positionActuelle;
 	/**
-	 * représente l'orientation du Cubie dans le Cube mélangé
+	 * reprÃ©sente l'orientation du Cubie dans le Cube mÃ©langÃ©
 	 */
 	private int orientation;
 	/**
 	 * 
-	 * @param posIn la position du Cubie dans le Cube résolu
-	 * @param posAc la position du Cubie dans le Cube mélangé
-	 * @param ori l'orientation du Cubie dans le Cube mélangé
+	 * @param posIn la position du Cubie dans le Cube rÃ©solu
+	 * @param posAc la position du Cubie dans le Cube mÃ©langÃ©
+	 * @param ori l'orientation du Cubie dans le Cube mÃ©langÃ©
 	 */
 	public Cubie(int posIn, int posAc, int ori) {
 		positionInitiale=posIn;
@@ -31,8 +32,8 @@ public class Cubie {
 		orientation=ori;
 	}
 	/**
-	 * Récupère la position du Cubie dans le Cube mélangé
-	 * @return positionActuelle : la position du Cubie dans le Cube mélangé
+	 * RÃ©cupÃ¨re la position du Cubie dans le Cube mÃ©langÃ©
+	 * @return positionActuelle : la position du Cubie dans le Cube mÃ©langÃ©
 	 */
 	public int getPos() {
 		return positionActuelle;
@@ -45,14 +46,14 @@ public class Cubie {
 		return orientation;
 	}
 	/**
-	 * Change la position du Cubie dans le Cube mélangé
+	 * Change la position du Cubie dans le Cube mÃ©langÃ©
 	 * @param p : nouvelle position du Cubie
 	 */
 	public void setPos(int p) {
 		positionActuelle=p;
 	}
 	/**
-	 * Change l'orientation du Cubie dans le Cube mélangé
+	 * Change l'orientation du Cubie dans le Cube mÃ©langÃ©
 	 * @param p : nouvelle orientation du Cubie
 	 */
 	public void setOr(int p) {

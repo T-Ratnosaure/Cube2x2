@@ -6,15 +6,15 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Classe reprÈsentant le Cube de Rubik
- * @author LÈandre Adam
+ * Classe repr√©sentant le Cube de Rubik
+ * @author L√©andre Adam
  * @author Aydin Abiar
  * 
  */
 public class Cube {
 	
 	/**
-	 * 2 constantes : Un tableau des positions de chaque Cubie dans le Cube rÈsolu; la taille du Cube = nombre de Cubies)
+	 * 2 constantes : Un tableau des positions de chaque Cubie dans le Cube r√©solu; la taille du Cube = nombre de Cubies)
 	 */
 	final public static Integer[] POSITIONS_INITIALES = {0,1,2,3,4,5,6};
 	final public static int TAILLE=7;
@@ -22,7 +22,7 @@ public class Cube {
 	/**
 	 * 9 constantes Rotations, toutes les rotations possibles lors du jeu
 	 */	
-	final public static Rotation WW = new Rotation(new Integer[]{0,0,0,0,0,0,0}, new Integer[]{0,0,0,0,0,0,0},"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");;
+	final public static Rotation WW = new Rotation(new Integer[]{0,0,0,0,0,0,0}, new Integer[]{0,0,0,0,0,0,0},"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
 	@SuppressWarnings("unused")
 	final public static Rotation R = new Rotation(new Integer[]{4,1,2,0,6,5,3}, new Integer[]{1,0,0,2,2,0,1},"R");
 	@SuppressWarnings("unused")
@@ -43,7 +43,7 @@ public class Cube {
 	final public static Rotation F2 = F.permProd(F);
 	
 	/**
-	 * Tableau des 7 Cubies du Cube, liste des Rotations effectuÈes chronologiquement sur le cube, boolÈen qui dÈtermine si le cube est rÈsolu ou non
+	 * Tableau des 7 Cubies du Cube, liste des Rotations effectu√©es chronologiquement sur le cube, bool√©en qui d√©termine si le cube est r√©solu ou non
 	 */
 	final public Cubie[] cubies = new Cubie[TAILLE];
 	@SuppressWarnings("unused")
@@ -63,48 +63,46 @@ public class Cube {
 	}
 	
 	/**
-	 * MÈthode appliquant une permutation sur le Cube this
-	 * @param w la rotation ‡ appliquer
+	 * Effectue une Rotation sur this puis incr√©mente la liste des Rotations effectu√©es
+	 * @param Une Rotation
 	 */
-	public void appliquePerm(Rotation w) {
+	public void updateFromRotation(Rotation rotation) {
 		for (int i = 0; i<TAILLE; i++) {
 			int posBeforeRotation = this.cubies[i].getPos();
 			int oriBeforeRotation = this.cubies[i].getOr();
-			int oriAfterRotation = w.getOrientation().get(posBeforeRotation);
-			int posAfterRotation = w.getPosition().get(posBeforeRotation);
+			int oriAfterRotation = rotation.getOrientation().get(posBeforeRotation);
+			int posAfterRotation = rotation.getPosition().get(posBeforeRotation);
 			
 			this.cubies[i].setOr((oriAfterRotation + oriBeforeRotation)%3);
 			this.cubies[i].setPos(posAfterRotation);
 		}
-	}
-	/**
-	 * Effectue une Rotation ou une liste de Rotations sur this puis incrÈment la liste des Rotations effectuÈes
-	 * @param Une Rotation ou une ArrayList des rotations ‡ faire
-	 */
-	public void updateFromRotation(Rotation rotation) {
-		this.appliquePerm(rotation);
+		
 		this.doneRotations.add(rotation);
 	}
 	
+	/**
+	 * Effectue une liste de Rotations sur this puis incr√©mente la liste des Rotations effectu√©es
+	 * @param Une ArrayList des rotations √† faire
+	 */
 	public void updateFromRotations(ArrayList<Rotation> rotations) {
 		for(int i=0; i<rotations.size(); i++) {
-			this.appliquePerm(rotations.get(i));
-			this.doneRotations.add(rotations.get(i));
+			updateFromRotation(rotations.get(i));
 		}
 	}
 	
 	
 	/**
-	 * …change les deux positions des Cubies 0 et 4
-	 * @param tableau des permutations dÈj‡ effectuÈes (vide au dÈbut Èventuellement)
+	 * √âchange les deux positions des Cubies 0 et 4
+	 * @param tableau des permutations d√©j√† effectu√©es (vide au d√©but √©ventuellement)
 	 */
 	public void transposition() {
 			ArrayList<Rotation> perm = new ArrayList<Rotation>(Arrays.asList(R,U2,Rprime,Uprime,R,U2,Rprime,F,Rprime,Fprime,R));
 			updateFromRotations(perm);
 	}
+	
 	/**
-	 * Place ‡ leurs places les cubies du bas
-	 * @param doneRotations la liste des rotations dÈj‡ effectuÈes
+	 * Place √† leurs places les cubies du bas
+	 * @param doneRotations la liste des rotations d√©j√† effectu√©es
 	 */
 	public void placeDown(){
 		ArrayList<Rotation> update = new ArrayList<Rotation>();
@@ -195,7 +193,7 @@ public class Cube {
 	
 	/**
 	 * Donne leur orientation aux cubies du bas
-	 * @param doneRotations la liste des rotations dÈj‡ effectuÈes
+	 * @param doneRotations la liste des rotations d√©j√† effectu√©es
 	 */
 	public void orientationDown() {
 		ArrayList<Rotation> update = new ArrayList<Rotation>();
@@ -207,7 +205,7 @@ public class Cube {
 				break;
 		
 			case 2:
-				update.addAll(Arrays.asList(Fprime, U, F2, Uprime, F2, Uprime, Fprime, U, F, U, Fprime, Uprime, F2, Uprime, F2, U)); // prout //
+				update.addAll(Arrays.asList(Fprime, U, F2, Uprime, F2, Uprime, Fprime, U, F, U, Fprime, Uprime, F2, Uprime, F2, U)); 
 				break;
 			
 			default:				
@@ -235,7 +233,7 @@ public class Cube {
 		switch (this.cubies[6].getOr()) {
 		
 			case 1:
-				update.addAll(Arrays.asList(R2, U, R2, Uprime, R2, Uprime, Rprime, U, R, U, Rprime, Uprime, R2, Uprime, R2, U, R)); /* prout */
+				update.addAll(Arrays.asList(R2, U, R2, Uprime, R2, Uprime, Rprime, U, R, U, Rprime, Uprime, R2, Uprime, R2, U, R));
 				break;
 		
 			case 2:
@@ -249,7 +247,7 @@ public class Cube {
 	}
 	
 	/**
-	 * Pour rendre le code plus esthÈtique et moins redondant. Remplit listeBis des indices des cubies positionnÈs en 0, 1, 4 ou 5
+	 * Pour rendre le code plus esth√©tique et moins redondant. Remplit listeBis des indices des cubies positionn√©s en 0, 1, 4 ou 5
 	 * @param un tableau d'entier et un ArrayList d'entier
 	 */
 	public void getIndexOfPos0145(ArrayList<Integer> listeBis) {
@@ -264,8 +262,8 @@ public class Cube {
 	}
 	
 	/**
-	 * Oriente les cubies de la deuxiËme couronne
-	 * @param doneRotations la liste des rotations ‡ effectuer pour rÈsoudre le cube
+	 * Oriente les cubies de la deuxi√®me couronne
+	 * @param doneRotations la liste des rotations √† effectuer pour r√©soudre le cube
 	 */
 	public void OLL() {
 		int[] x = {0,1,4,5};
@@ -283,7 +281,7 @@ public class Cube {
 					getIndexOfPos0145(listeBis);
 				}
 				if (this.cubies[listeBis.get(2)].getOr()==1) {
-					update.addAll(Arrays.asList(R2, U2, Rprime, U2, R2)); /* prout */
+					update.addAll(Arrays.asList(R2, U2, Rprime, U2, R2));
 					updateFromRotations(update);
 					update.clear();
 				}
@@ -341,8 +339,8 @@ public class Cube {
 		}
 	}
 	/**
-	 * Place correctement les cubies de la derniËre couronne
-	 * @param doneRotations la liste des rotations dÈj‡ effectuÈes
+	 * Place correctement les cubies de la derni√®re couronne
+	 * @param doneRotations la liste des rotations d√©j√† effectu√©es
 	 */
 	public void PLL() {
 		ArrayList<Rotation> update = new ArrayList<Rotation>();
@@ -372,7 +370,7 @@ public class Cube {
 	/**
 	 * Optimise la liste
 	 * @param doneRotations la liste des coups
-	 * @return la liste des coups optimisÈe renvoi2
+	 * @return la liste des coups optimis√©e renvoi2
 	 */
 	public ArrayList<Rotation> reduction() {
 		ArrayList<Integer> renvoi = new ArrayList<Integer>();
@@ -487,7 +485,7 @@ public class Cube {
 	}
 	
 	/**
-	 * Renvoie une ligne dÈcrivant chacune un Cubie (son numÈro, sa position actuelle et son orientation actuelle)
+	 * Renvoie une ligne d√©crivant chacune un Cubie (son num√©ro, sa position actuelle et son orientation actuelle)
 	 */
 	@Override
 	public String toString() {

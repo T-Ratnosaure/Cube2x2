@@ -475,13 +475,32 @@ public class Cube {
 		return renvoi2;
 	}
 	
+	/**
+         * Actualise l'état du cube : Résolu ou pas
+         */
+        public void checkIfSolved() {
+            ArrayList<Integer> posOfCubiesAct = new ArrayList<Integer>();
+            ArrayList<Integer> oriOfCubiesAct = new ArrayList<Integer>();
+
+            for (int i = 0; i < TAILLE; i++) {
+                posOfCubiesAct.add(this.cubies[i].getPos());
+                oriOfCubiesAct.add(this.cubies[i].getOr());
+            }
+
+            if (posOfCubiesAct.equals(Arrays.asList(0,1,2,3,4,5,6)) && oriOfCubiesAct.equals(Arrays.asList(0,0,0,0,0,0,0))) {
+                this.solved = true;
+            }
+            else {
+                this.solved = false;
+            }
+        }
+	
 	public void humanSolver(){
 		this.placeDown();
 		this.orientationDown();
 		this.OLL();
 		this.PLL();
 		//this.reduction();
-		
 	}
 	
 	/**

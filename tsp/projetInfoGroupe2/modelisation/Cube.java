@@ -278,7 +278,6 @@ public class Cube {
      * Oriente les cubies de la deuxième couronne.
      */
     public void OLL() {
-        int[] x = {0,1,4,5};
         List<Integer> liste = Arrays.asList(this.cubies[0].getOr(),this.cubies[1].getOr(),this.cubies[4].getOr(),this.cubies[5].getOr());
         ArrayList<Integer> listeBis = new ArrayList<Integer>();
         ArrayList<Rotation> update = new ArrayList<Rotation>();

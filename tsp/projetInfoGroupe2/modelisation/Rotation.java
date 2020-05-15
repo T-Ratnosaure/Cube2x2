@@ -10,6 +10,8 @@ import java.util.List;
  */
 
 public class Rotation {
+    
+    final public static int = NOMBRE_ORIENTATIONS;
 
     private String nom;
 
@@ -47,7 +49,7 @@ public class Rotation {
         for(int i=0;i<Cube.TAILLE;i++) {
             int posAfterThis = this.position.get(i);
             pos[i]=B.position.get(posAfterThis);
-            ori[i]=(B.orientation.get(posAfterThis)+this.orientation.get(i))%3;
+            ori[i]=(B.orientation.get(posAfterThis)+this.orientation.get(i))%NOMBRE_ORIENTATIONS;
         }
         Rotation productRotation = new Rotation(pos,ori,this.toString()+B.toString());
         return productRotation;
@@ -62,7 +64,7 @@ public class Rotation {
         Integer[] ori = new Integer[Cube.TAILLE];
         for(int i=0;i<Cube.TAILLE;i++) {
             pos[this.position.get(i)] = i;
-            ori[this.position.get(i)] = (3-this.orientation.get(i))%3;
+            ori[this.position.get(i)] = (NOMBRE_ORIENTATIONS-this.orientation.get(i))%NOMBRE_ORIENTATIONS;
         }
         Rotation reverseRotation = new Rotation(pos,ori,this.toString()+"prime");
         return reverseRotation;

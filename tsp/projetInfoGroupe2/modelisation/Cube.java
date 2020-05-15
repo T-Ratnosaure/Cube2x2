@@ -29,11 +29,11 @@ public class Cube {
     @SuppressWarnings("unused")
     final public static Rotation U = new Rotation(new Integer[]{1,5,2,3,0,4,6},new Integer[]{0,0,0,0,0,0,0},"U");
     @SuppressWarnings("unused")
-    final public static Rotation Fprime = F.permInv();
+    final public static Rotation FPRIME = F.permInv();
     @SuppressWarnings("unused")
-    final public static Rotation Uprime = U.permInv();
+    final public static Rotation UPRIME = U.permInv();
     @SuppressWarnings("unused")
-    final public static Rotation Rprime = R.permInv();
+    final public static Rotation RPRIME = R.permInv();
     @SuppressWarnings("unused")
     final public static Rotation R2 = R.permProd(R);
     @SuppressWarnings("unused")

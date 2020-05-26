@@ -180,8 +180,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Met à jour la vue et le modèle en fonction d'une des 8 rotations cliquables. Sert surtout à simplifier la méthode suivante updateCubeFromRotationButtonClick(View view).
-     * @param rotation une des 8 rotation cliquables
+     * Met à jour la vue et le modèle en fonction d'une des 12 rotations cliquables. Sert surtout à simplifier la méthode suivante updateCubeFromRotationButtonClick(View view).
+     * @param rotation une des 12 rotation cliquables
      * @param lcc la ligne ou colonne ou centre concerné
      * @param face la face concernée
      * @param direction le sens de la rotation (+ ou -)
